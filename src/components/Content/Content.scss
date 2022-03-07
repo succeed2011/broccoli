@@ -1,0 +1,20 @@
+.wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 140px);
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  text-align: center;
+
+  .content {
+    .title {
+      font-size: 30px;
+      font-weight: bold;
+    }
+    .sub-title {
+      padding: 20px 0;
+      color: gray;
+    }
+  }
+}

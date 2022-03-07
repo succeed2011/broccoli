@@ -1,0 +1,29 @@
+.form {
+  &-head {
+    position: relative;
+    margin-bottom: 40px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 70px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 1px;
+      background-color: black;
+    }
+  }
+  .submit-btn {
+    width: 100%;
+    margin-top: 40px;
+  }
+  .error-msg {
+    margin-top: 20px;
+    text-align: center;
+    color: red;
+  }
+}
