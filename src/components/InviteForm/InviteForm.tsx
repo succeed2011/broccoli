@@ -35,42 +35,50 @@ class InviteForm extends React.Component<Props, State> {
     if (this.state.sending) {
       return;
     }
-    this.formRef.current!.validateFields().then((values) => {
-      this.setState({
-        sending: true,
-        errorMsg: "",
-      });
-
-      axios
-        .post(
-          "https://l94wc2001h.execute-api.ap-southeast-2.amazonaws.com/prod/fake-auth",
-          {
-            name: values.name,
-            email: values.email,
-          }
-        )
-        .then(
-          (res) => {
-            this.setState({
-              showSuccess: true,
-              showError: false,
-              errorMsg: "",
-            });
-          },
-          (err) => {
-            this.setState({
-              showSuccess: false,
-              showError: true,
-              errorMsg: err.response?.data?.errorMessage || err.toString(),
-            });
-          }
-        )
-        .finally(() => {
-          this.setState({
-            sending: false,
-          });
+    this.formRef
+      .current!.validateFields()
+      .then((values) => {
+        this.setState({
+          sending: true,
+          errorMsg: "",
         });
-    });
+        try {
+          axios
+            .post(
+              "https://l94wc2001h.execute-api.ap-southeast-2.amazonaws.com/prod/fake-auth",
+              {
+                name: values.name,
+                email: values.email,
+              }
+            )
+            .then(
+              (res) => {
+                this.setState({
+                  showSuccess: true,
+                  showError: false,
+                  errorMsg: "",
+                });
+              },
+              (err) => {
+                this.setState({
+                  showSuccess: false,
+                  showError: true,
+                  errorMsg: err.response?.data?.errorMessage || err.toString(),
+                });
+              }
+            )
+            .finally(() => {
+              this.setState({
+                sending: false,
+              });
+            });
+        } catch (err) {
+          //
+        }
+      })
+      .catch(() => {
+        //
+      });
   };
   render() {
     const { onOk } = this.props;

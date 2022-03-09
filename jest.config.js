@@ -23,8 +23,8 @@ module.exports = {
   transformIgnorePatterns: ["/node_modules/", "/dist/", "lib"],
   snapshotSerializers: ["enzyme-to-json/serializer"],
   testURL: "http://localhost",
-  // testEnvironmentOptions: {
-  //   enzymeAdapter: "react17",
-  // },
+  testEnvironmentOptions: {
+    enzymeAdapter: "react17",
+  },
   coverageDirectory: "<rootDir>/test/coverage", // 输出覆盖信息文件的目录
 };
