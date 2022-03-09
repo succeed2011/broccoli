@@ -2,13 +2,9 @@ import React from "react";
 import { act } from "react-dom/test-utils";
 // import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 
-// import "@testing-library/jest-dom";
 import { render, shallow, configure, mount } from "enzyme";
 import InviteForm from "./InviteForm";
 
-/**
- * @jest-environment jsdom
- */
 const globalTimeout = global.setTimeout;
 const sleep = async (timeout = 0) => {
   await act(async () => {
